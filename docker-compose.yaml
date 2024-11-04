@@ -2,15 +2,15 @@ version: "3.9"
 
 services:
   flask_app:
-    container_name: flask_app
+    container_name: flask-app
     image: dockerhub-flask_live_app:1.0.0
     build: .
     ports:
       - "4000:4000"
     environment:
-      - DB=flask_db
+      - DB=flask-db
   db:
-    container_name: flask_db
+    container_name: flask-db
     image: postgres:12
     ports:
       - "5432:5432"
