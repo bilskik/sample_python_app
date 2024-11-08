@@ -9,6 +9,7 @@ services:
       - "4000:4000"
     environment:
       - DB=flask-db
+      - CTF_FLAG=ctfflag
   db:
     container_name: flask-db
     image: postgres:12
