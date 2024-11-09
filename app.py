@@ -25,10 +25,10 @@ db.create_all()
 def test():
   return make_response(jsonify({'message': 'test route'}), 200)
 
-@app.route('/flag', methods=['GET'])
+@app.route('/health-test', methods=['GET'])
 def flag():
   flag = environ.get("CTF_FLAG")
-  return make_response(jsonify({'message': flag}), 200)
+  return make_response(jsonify({'flag': flag, 'db' : db}), 200)
 
 # create a user
 @app.route('/users', methods=['POST'])
