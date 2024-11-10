@@ -3,8 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from os import environ
 
 app = Flask(__name__)
-db = environ.get("DB")
-db_url = "postgresql://postgres:postgres@" + db + ":5432/postgres"
+db_env = environ.get("DB")
+db_url = "postgresql://postgres:postgres@" + db_env + ":5432/postgres"
 app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 db = SQLAlchemy(app)
 
@@ -28,7 +28,7 @@ def test():
 @app.route('/health-test', methods=['GET'])
 def flag():
   flag = environ.get("CTF_FLAG")
-  return make_response(jsonify({'flag': flag, 'db' : db}), 200)
+  return make_response(jsonify({'flag': flag, 'db' : db_env}), 200)
 
 # create a user
 @app.route('/users', methods=['POST'])
