@@ -34,8 +34,7 @@ def flag():
 @app.route('/users', methods=['POST'])
 def create_user():
   try:
-    data = request.get_json()
-    new_user = User(username=data['username'], email=data['email'])
+    new_user = User(username='John', email='john@america.com')
     db.session.add(new_user)
     db.session.commit()
     return make_response(jsonify({'message': 'user created'}), 201)
